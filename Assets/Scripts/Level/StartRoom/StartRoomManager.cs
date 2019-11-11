@@ -5,12 +5,12 @@ public class StartRoomManager : MonoBehaviour
 {
     public static bool isEnemyDown = false;
     public static bool isBossDoorOpen = false;
-    public static bool isPlayerInRoom = true;
-    private static bool enemiesDeleted = false;
+    private bool enemiesDeleted = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.currentRoomName = "StartRoom";
         if (isEnemyDown)
         {
             FindObjectOfType<DoorManager>().Open("Startroom_Door");
@@ -31,7 +31,6 @@ public class StartRoomManager : MonoBehaviour
 
         if (!enemiesDeleted && isEnemyDown)
         {
-            Debug.Log("Deleted enemies");
             EnemyManager.instance.listEnemyCombat.ForEach(enemy => { Destroy(enemy.gameObject); });
             enemiesDeleted = true;
         }
