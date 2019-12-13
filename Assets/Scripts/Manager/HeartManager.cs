@@ -13,7 +13,7 @@ public class HeartManager : MonoBehaviour
     {
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < PlayerManager.instance.PlayerCombat.playerStats.currentHealth)
+            if (i < GameManager.playerHealth)
             {
                 hearts[i].sprite = fullHeart;
             }
@@ -22,7 +22,7 @@ public class HeartManager : MonoBehaviour
                 hearts[i].sprite = emptyHeart;
             }
 
-            if (i < PlayerManager.instance.PlayerCombat.playerStats.maxHealth)
+            if (i < GameManager.maxHealth)
             {
                 hearts[i].enabled = true;
             }

@@ -17,7 +17,6 @@ public class PlayerCombat : MonoBehaviour
     {
         playerAnimation = new PlayerAnimation(PlayerManager.instance.Player.GetComponent<Animator>());
         playerStats.currentHealth = GameManager.playerHealth;
-        Debug.Log(playerStats.currentHealth);
     }
 
     private void Update()
@@ -40,8 +39,12 @@ public class PlayerCombat : MonoBehaviour
         float angle = Vector3.Angle(PlayerManager.instance.Player.transform.forward, enemyDir);
         
         if (isBlocking && angle < 90f)
+        {
+            SoundManager.Instance.PlayBlock();
             return;
-        playerStats.currentHealth -= damage;
+        }
+        playerStats.currentHealth -= 1;
+        GameManager.playerHealth -= 1;
         if (playerStats.currentHealth < 0)
         {
             playerAnimation.PlayDeath();

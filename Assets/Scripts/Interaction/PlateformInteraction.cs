@@ -23,8 +23,24 @@ public class PlateformInteraction : MonoBehaviour
         {
             pos = boxRef.transform.position;
             isBlock = true;
-            FindObjectOfType<DoorManager>().Open(doorName);
-            Debug.Log("Collision !! ");
+
+            
+            if (doorName == "Door_Boss" && !GameManager.levelClear)
+            {
+                GameManager.levelClear = true;
+                Dialog dialog = new Dialog();
+
+                dialog.name = "A Png";
+                dialog.sentences = new string[1];
+                dialog.sentences[0] = "The boss door have been opened ! Go back to the previous room";
+                dialog.hasBeenTriggered = false;
+
+                FindObjectOfType<DialogManager>().StartDialogue(dialog);
+            }
+            else
+            {
+                FindObjectOfType<DoorManager>().Open(doorName);
+            }
         }
     }
 }

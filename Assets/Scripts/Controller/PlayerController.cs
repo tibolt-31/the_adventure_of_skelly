@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
             velocity = 0f;
             playerAnimation.PlayAttack();
             timerAttack = 0f;
+            SoundManager.Instance.PlaySlash();
         }
 
         if (input.x == 0 && input.y == 0)

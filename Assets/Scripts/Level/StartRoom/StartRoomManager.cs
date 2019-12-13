@@ -10,13 +10,21 @@ public class StartRoomManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.currentRoomName = "StartRoom";
         if (isEnemyDown)
         {
             FindObjectOfType<DoorManager>().Open("Startroom_Door");
             FindObjectOfType<DoorManager>().Open("Left_Door");
             FindObjectOfType<DoorManager>().Open("Right_Door");
-            PlayerManager.instance.Player.transform.position = new Vector3(-1.58f, 0f, 41.3f);
+            Debug.Log(GameManager.currentRoomName);
+            if (GameManager.currentRoomName == "Room_1")
+                PlayerManager.instance.Player.transform.position = new Vector3(-1.58f, 0f, 41.3f);
+            else if (GameManager.currentRoomName == "Room_5")
+                PlayerManager.instance.Player.transform.position = new Vector3(2.37f, 0f, 41.6f);
+        }
+        GameManager.currentRoomName = "StartRoom";
+        if (GameManager.levelClear)
+        {
+            FindObjectOfType<DoorManager>().Open("Boss_Door");
         }
     }
 

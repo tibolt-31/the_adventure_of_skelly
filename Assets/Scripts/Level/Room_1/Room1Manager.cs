@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class Room1Manager : MonoBehaviour
@@ -21,7 +20,6 @@ public class Room1Manager : MonoBehaviour
         
         if (isEnemyDown)
         {
-            FindObjectOfType<DoorManager>().Open("Door_1_Right");
             FindObjectOfType<DoorManager>().Open("Door_1_Top");
         }
         
